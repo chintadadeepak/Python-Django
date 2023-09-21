@@ -1,0 +1,33 @@
+# python is a popular prog language
+# in terms of what?
+# no of devs using, no of libraries it offer, 
+# no of companies using, no of areas it's implemented
+# python is a general purpose language, domains such as AI, ML, web-dev, GUI
+# python is a interpreted which means compilation and execution at the time one after the other,
+# object oriented --> classes and objects
+# high level language --> humans can understand
+
+# why should we learn a programming lang and code?
+# if we want to perform a task with a machine, we need to instruct the machine first
+# as machines can understand only binary, we can't instruct in binary
+# so we need a language which was understood by both
+# this where prog lang comes into play
+# which will be compiled and run on hardware
+
+
+# arithmetic operations
+# + --> add
+# - --> sub
+# / --> float div --> which also gives you the decimal in quotient
+# // --> floor div --> which gives the quotient without decimal
+# * --> multi 
+# ** --> power of
+# % --> remainder
+# if you include single quote wrap everything in double quote
+# if you include double quote then do in reverse
+# if are there, use backslash to skip the meaning of syntax
+# print('deepak\'s "laptop"')
+# /n is escape sequence character which mean new line
+# in order to skip the escape sequence characters meaning use r --> stands for raw string
+# raw string does not cares the syntax it's simply prints the string
+print(r'c:\docs:\newton')
