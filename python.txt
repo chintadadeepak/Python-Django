@@ -31,3 +31,82 @@
 # in order to skip the escape sequence characters meaning use r --> stands for raw string
 # raw string does not cares the syntax it's simply prints the string
 print(r'c:\docs:\newton')
+
+# variables and list
+# variables are the containers which hold certain values, they can be mutable.
+# python is weakly typed language so mentioning of datatype is not required.
+# at the time of declaration assignment is mandatory, based on which type of the variable is determined.
+
+# using list we can able to store different values of different type.
+# we can also form nested lists.
+# slicing - fetching certain elements from the list.
+# if you do not specify the last index, length will be taken by default.
+# in IDLE if you want the previous output, we can underscore to get the previous output.
+# indexing --> 0 to n - 1
+# reverse indexing starts from --> -1 to -n.
+# methods upon list:
+1. append() --> inserts element at the end.
+2. insert(idx, ele)
+3. remove(ele) --> removes the first occurence of the element.
+4. pop(index) --> element at the corresponding index will be removed.
+5. pop() --> last element will be removed
+6. del() --> to delete multiple values involves slicing
+7. extend() --> to insert multiple values pass multiple values in the list
+8. elementary operations like min, max, sum, sort
+
+# Tuple and Set
+# Tuples are similar to lists, the only difference is tuples are immutable.
+# indexing and slicing works
+# set will store the unique values, does not follow the sequence in which elements are insrted.
+# as set is implemented using hashing for efficient retrieval, it does not follow indexing.
+# sets are mutable.
+
+# setting path and help command
+# using set path we can define the path to command line, but after every login we need to define.
+# using environmental variables is a good idea
+# using help command and corresponding concept works, direct help command followed by the classname as a argument also works.
+
+# more on variables
+# for getting the address of a variable, we can use id command.
+# in python, we have data pool concept where if a value is already existed in the memory i.e in the data pool, then no memory allocated for the current variable. instead same address will be given the current variable.
+# if a variable is no more used in the program, it'll be given to grabage collection by PVM.
+# python does not supports final variables but we can specify the intention using all capital letters.
+
+# datatypes
+# 1. None --> absence of value
+# 2. Numeric --> int, float, complex, boolean
+# 3. list
+# 4. tuple
+# 5. set
+# 6. string
+# 7. range --> returns a range of values
+# 8. dictionary --> uses key-value machanism.
+# keys should be unique
+# we can fetch the values using two ways
+# 1. using get function which takes key as an argument.
+# 2. passing key in the subscript
+# we can get all keys and values using keys() and values()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
