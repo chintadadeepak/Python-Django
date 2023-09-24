@@ -111,9 +111,40 @@ print(r'c:\docs:\newton')
 # passing arguments from the command line
 # using argv function --> returns string in return
 
+# print function takes into next line
+# if we specify end = "" as the second arg the control kept in the sameline itself.
 
 
+# patterns
+l1 = ['a','b','c','d']
+l2 = ['p','q','r']
 
+for i in range(len(l1)):
+    for j in range(i+1):
+        print(l1[j], end=" ")
+    
+    for k in range(i, len(l2)):
+        print(l2[k], end=" ")
+
+    print()
+
+break, continue, pass
+break --> used to come forcibly from the loop
+continue --> used to skip the statements after the continue statement.
+pass --> if we don't have any statements inside the block, such as conditional statements, methods and even
+in class as well
+
+# pass inside the conditional statements
+if True:
+    pass
+
+# pass inside the method
+def fun():
+    pass
+
+# pass inside the class
+class Human:
+    pass
 
 
 
