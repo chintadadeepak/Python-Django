@@ -146,6 +146,249 @@ def fun():
 class Human:
     pass
 
+# arrays --> similar to list DS, but array stores similar datatype values.
+# using array() of array lib, we need to pass two arg 
+# 1. typecode --> type of the data 
+# example, for integer --> i
+# for char it's u --> unicode representation
+# 2. list containing the values
+# smallCase --> signed
+# captialCase --> unsigned
+# array class lot of methods including buffer_info()
+# buffer_info() returns a tuple containing address and size of the array 
+from array import array as arr
+# vals = arr('u', ['a', 'e', 'i'])
+# for ch in vals:
+#     print(ch)
+
+vals = arr('i', [1, 2, 3, 4, 5])
+print(vals.buffer_info())
+# newArr = arr(vals.typecode, (ele * ele for ele in vals)) 
+# fetch value from vals and store in new array
+# print(newArr.index(16))
+
+# why numpy
+# the array method of array class does not support the multi dimensional array
+# hence we need to install a third party library called numpy
+# from array import array as arr
+
+import numpy as np
+vals = np.array([[1,2,3], [4,5,6]])
+print(vals)
+
+# creating an array in different ways
+# 1. using numpy array()
+# arr = array([1, 2, 3, 4])
+# 2. using linspace()
+# we need to specify the start, stop and no of parititions we want to divide
+# as we are dividing the range the values in the array will be float values
+# start and end values are included
+# arr = linspace(1, 15, 15)
+# 3. using logspace()
+# logspace also works similar to linspace() 
+# but it deals with power of the specified values
+# arr = logspace(1, 5, 5)
+# 4. using arange()
+# arange() is similar to range() function takes start, end and gap between the values
+# arr = arange(1, 10, 2)
+# 5. using ones()
+# ones() will assign the float values of 1. of specified size
+# if we specify explicitly int, it assing int values
+# 6. using zeros()
+# zeros() working similar to ones()
+
+from numpy import *
+
+arr = zeros((5, 4), int)
+print(arr)
+
+# copying an array using view() and copy()
+from numpy import array
+arr1 = array([1, 2, 3, 4])
+# arr2 = arr1 # this step does not mean that we are copying, 
+# instead creating a new reference to the same memory location
+# copying of an array in python is done in 2 ways
+# using view() --> shallow copy --> though different arrays created inside the memory
+# one modification will impact the second array
+# arr2 = arr1.view()
+# arr2[0] = 5
+# print(arr1, arr2)
+# using copy() --> deep copy --> different memory locations
+# one modification will not impact the other
+arr2 = arr1.copy()
+arr2[0] = 5
+print(arr1, arr2)
+
+# working with multi-dimensional arrays and matrices
+from numpy import *
+
+# arr1 = arange(1, 10).reshape(3, 3)
+# arr2 = arange(1, 10).reshape(3, 3)
+# print(arr.dtype) # returns type of the elements
+# print(arr.ndim) # returns the dimension of the array i.e 1D, 2D
+# print(arr.size) # returns no of elements
+# print(arr.shape) # returns the shape --> tuple contains rows, cols
+
+# arr = arr.reshape(4, 3) # using reshape() we can convert a linear array
+# to multi-dimensional array
+# print("initial: ", arr)
+# arr1 = arr1.reshape(3, 3)
+# arr2 = 
+# print("after reshape: ", arr)
+# print(arr)
+# using flatten() --> we can convert a multi-dimensional array to linear array
+# arr = arr.flatten()
+# print('after flatten', arr)
+#print(arr)
+# numpy has a inbuilt method of matrix class
+# which will provide additional features of matrix
+# such as matrix multiplication etc
+# we can also pass the matrix in the form of string
+# where the rows values should be seperated using semicolon
+# m1 = matrix(arr1)
+# m2 = matrix(arr2)
+m1 = matrix('1 2; 3 4')
+m2 = matrix('4 3; 2 1')
+print(m1 * m2)
+
+# functions --> block or suite of statements which will do perform a task or returns a value
+# in python,we define a function using def keyword
+# in python, normal variables and functions are differentiated using round brackets
+# arguments --> values passed to a function as an input
+# actual arguments and formal arguments
+# formal arguments --> arguments passed to the function.
+# actual arguments --> arguments which were the actual values passed from the called function
+# these are 4 types:
+# 1. positional --> order in which we have passed the arguments --> wrong order will leads to errors
+# 2. keyword --> we specify the keyword at the time of passing
+# 3. default --> If the user does not provide the value, it will be replaced with default value, otherwise if user passes then it will be overriden
+# 4. variable length --> single variable handles multiple values 
+# and that variable internally is a tuple.
+
+# def greet(name, country):
+#     print("hello {}, welcome to {} ".format(name, country))
+
+# def person(name, age = 20):
+#     print('name: {}, age: {}'.format(name, age))
+
+# person(name = 'Deepak', age = 23)
+
+def add(a, *b): # *b is tuple handling 3 values.
+    return a + sum(b)
+
+print(add(2, 3, 4, 5))
+
+# keyword variable length arguments
+# in variable length arguments, we have seen that single can handle multiple values
+# what if you want pass the keyword as well
+
+
+def person(**data): # **data holds the keywords and values as well
+    for key in data.items(): # key internally represents a tuple of keyword and value
+        print(key)
+
+
+
+person(name = "deepak", age = 20, city = "vizag")
+
+# global keyword and globals function
+# functions will give priority to the local values then global values
+# global variables can accessible within the file
+# if you want to access the global variables inside the function use global keyword
+# situation:
+# want to access the global and local variable of same name inside the function
+# it can be done using globals()
+a = 10
+# b = 20
+# c = 30
+# print(id(a))
+def fun():
+    # global a # we intended to access the global variable
+    a = 8 # refers to local variable 
+    # x = globals()['b']
+    # print(id(x))
+    # print(x)
+    # x += 1
+    # x = 30
+    print(a)
+    globals()['a'] = 15
+    # print(x)
+    
+    # not modifying the global instead we declared a variable inside the function
+    # print(id(a))
+    # print(a)
+
+fun()
+print(a)
+# print(a)
+# print(id(a))
+# print(a)
+
+
+# recursion --> function calling itself again and again 
+# until a specified met true
+def factRec(n):
+    if n == 1:
+        return 1 
+    return n * factRec(n-1)
+
+def factLoop(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+
+n = int(input('enter a number: '))
+print(factRec(n))
+print(factLoop(n))
+
+# anonymous function 
+# function which does not have a name
+# filter, map returns a sequence, typecase into a list
+# same works for map function
+# reduce returns a integer value which belongs to funtools package
+# def fun(n):
+#     return n * n
+
+# where lambda is used
+# map, filter and reduce
+# these functions takes lambda as an second argument
+
+# fun = lambda n : n * n
+# add = lambda a, b : a + b
+
+# print(fun(6))
+# print(add(2, 3))
+from functools import reduce
+l1 = [1, 2, 3, 4, 5, 6, 7]
+l2 = list(filter(lambda n : n % 2 == 0, l1))
+l3 = list(map(lambda n : n * n, l2))
+result = reduce(lambda a, b : a + b, l3)
+print(result)
+
+
+
+# decorators --> used for modifying the function behaviour 
+# without accessing / touching the file
+
+def div(a, b):
+    # if a < b:
+    #     a,b = b,a
+    return a / b
+
+
+# define a decorator
+def smart_div(func):
+    def inner(a, b):
+        if a < b:
+            a, b = b, a
+        
+        return func(a, b)
+    return inner
+
+div = smart_div(div)
+print(div(4, 2))
 
 
 
