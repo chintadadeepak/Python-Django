@@ -390,6 +390,80 @@ def smart_div(func):
 div = smart_div(div)
 print(div(4, 2))
 
+# module is folder which contains related files
+# if you want to access the methods use import statement
+from calc import *
+add()
+sub()
+
+# adv of modules
+# 1. modifications will not lead to the conflicts
+# 2. code reusability
+
+# __name__ keyword --> name keyword refers to the main method
+# i.e entry point of the execution --> the file which you execute first
+# when execute the file the __name__ refers to main
+# but when you import a file and that file __name__ is module name
+# whenever we import a file before the current file execution, imported file contents will be executed first
+# if you want to execute only the methods, then wrap name inside the if conditions
+from calc import *
+print(__name__)
+
+
+# OOPS --> object oriented programming
+# object --> instance of a class
+# for generating an object, we need to define the class
+# the class will act as blueprint for creating the object
+# every object will have two aspects:
+# 1. attributes --> variables
+# 2. behaviour --> methods
+
+# defining a class
+class Computer:
+    def config(self):
+        print('configuration of : ')
+
+
+# specify the type of the object using class
+com1 = Computer() # creation of an object
+
+# calling of methods
+# first way
+Computer.config(com1)
+
+# com1 replaces the self
+# self is the current calling object
+
+com1.config()
+# internally the calling object maps with self
+
+# constructor --> method which will be called at the time of object creation
+# in python --> __init__ method is a constructor
+# constructor is meant for initializing the variables
+
+# memory for objects will be created inside the heap memory
+# size of the object depends on the variables inside the class
+# constructor calculates the memory required by an object
+# we can compare the values of an object using our own function
+class Computer:
+
+    def __init__(self, ram, cpu):
+        self.ram = ram
+        self.cpu = cpu
+
+    def config(self):
+        print('configuration of current machine: {} {}'.format(self.ram, self.cpu))
+
+    def compare(self, other):
+        return self.ram == other.ram and self.cpu == other.cpu
+
+com1 = Computer(16, 'Rygen')
+com2 = Computer(16, 'Rygen')
+if com1.compare(com2):
+    print("equal")
+else:
+    print('unequal')
+
 
 
 
