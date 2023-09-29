@@ -465,6 +465,110 @@ else:
     print('unequal')
 
 
+# types of variables
+# 1. instance variables --> variables declared inside the contructor
+# 2. static or class variables --> variables declared outside the contructor i.e inside the class
+# for accessing the class members we don't need any object
+# we can access with the className itself
+# modification with one object will not impact the all objects
+# because the static variables was not shared among the all objects
+# if you modify with the class then only it impacts the all objects
+class Student:
+    school = 'telusko'
+    def __init__(self, name, age):
+        self.name = name # these variables are called as instance variables
+        self.age = age
+
+    def show(self):
+        print('name: {}, age: {}, school: {}'.format(self.name, self.age, self.school))
+
+
+s1 = Student('deepak', 20)
+s2 = Student('bobby', 18)
+# Student.school = 'gvp'
+s1.show()
+s2.show()
+print(Student.school)
+
+
+# types of methods
+# 1. instance methods --> methods which deals with instance variables. --> takes self object
+# 2. class methods --> methods which deals with class variables. --> takes class object
+# 3. static methods --> methods which does not deals with both. --> does not takes anything
+# static methods mainly used for accessing files, networking, database connectivity etc.
+
+class Student:
+    school = 'telusko'
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def show(self):
+        print('name: {}, age: {}'.format(self.name, self.age))
+
+    # static methods need a decorators --> i.e @classmethod
+    @classmethod
+    def class_met(cls): # argument name should be cls
+        print(cls.school)
+
+    @staticmethod
+    def static_met():
+        print('connecting..')
+
+s1 = Student('deepak', 20)
+s2 = Student('bobby', 18)
+
+s1.show()
+s2.show()
+
+Student.class_met()
+Student.static_met()
+
+
+# inner class
+# class inside a class
+# so far we assumed that class consists of variables and methods
+# but the twist is it can also contain the class
+# object for laptop can be done in two ways
+# 1. inside the constructor of Student
+# 2. outside the class using Student class
+
+class Student:
+
+    def __init__(self, name, rollno):
+        self.name = name
+        self.rollno = rollno
+        # self.lap = self.Laptop(cpu, ram) # this first way of initialization
+
+    def studentShow(self):
+        print('name: {}, rollno: {}'.format(self.name, self.rollno))
+
+
+    class Laptop:
+        def __init__(self, cpu, ram):
+            self.cpu = cpu
+            self.ram = ram
+
+        def laptopShow(self):
+            print('cpu: {}, ram: {}'.format(self.cpu, self.ram))
+
+
+
+s1 = Student('deepak', 20)
+s2 = Student('bobby', 18)
+
+lap1 = s1.Laptop('i5', 8)
+lap2 = s2.Laptop('i7', 16)
+
+lap1.laptopShow()
+lap2.laptopShow()
+# lap2.laptopShow()
+# s1.studentShow()
+# # s2.studentShow()
+# s1.lap.laptopShow()
+
+
 
 
 
