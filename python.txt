@@ -770,7 +770,171 @@ s2 = Student(34, 55)
 
 print(s1)
 
+# method overloading
+# python does not supports method overloading
+# we can not able to write the samefunction with different params
+# one way of implementing the method overloading is making the values None by default
+# if we pass the values, the values will be overriden
+class Student:
 
+    def avg(self, a = None, b = None, c = None):
+        if a != None and b != None and c != None:
+            return (a + b + c) / 3
+    
+        elif a != None and b != None:
+            return (a + b) / 2
+        
+        return a
+    # def avg(self, a, b):
+    #     return (a + b) / 2
+    
+    # def avg(self, a):
+    #     return a
+    
+
+
+s1 = Student()
+print(s1.avg(1, 2, 3))
+
+# polymorphism 
+# poly --> many
+# morphism --> beahviour
+# polymorphism is implemented in many ways
+# 1. Duck Typing
+# 2. Operators overloading
+# 3. Method overloading 
+# 4. Method overriding
+ 
+# method overriding
+
+class A:
+
+    def show(self):
+        print('in A show')
+
+
+class B (A):
+    # pass
+    # child class method overriden the parent class method
+    def show(self):
+        print('in B show')
+
+# in parent-child relation when we call a method using child object
+# first the preference will be given to the child class method
+# if the child class does not implements the method then the preference
+# will be given to the parent class
+b = B()
+b.show()
+
+
+# iterator
+# iterator is an object that contains values 
+# in a loop and returns one at a time.
+
+
+# Defining our own iterator
+# we need to define the iter() for returning an iterator object
+# next() for returning the values
+
+
+class fetchElements:
+
+    def __init__(self):
+        self.count = 1
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.count <= 10:
+            value = self.count
+            self.count += 1
+            return value
+        
+        else:
+            raise StopIteration  # if the values goes beyond the limit raise an exception
+
+
+# arr = [1, 2, 3, 4]
+values = fetchElements()
+
+for i in values:
+    print(i)
+# it = iter(arr)
+# # now it is an object of an iterator
+# print(it.__next__()) # one way of fetching values
+# print(next(it)) # second way of fetching values
+
+# for num in arr:
+#     print(num) # internally the loop calls next() for fetching the next values
+    # and value will be returned in the form of an iterator object
+
+# iterator using generator
+# instead of defining a class
+# we can create an iterator using generator
+# generator returns an iterator object
+# instead of defining iter() and next() 
+# we can use generator for iterators
+
+def fetchElements():
+    # yield 1 # using yield keyword we are returning an iterator object
+    # yield 2
+    # yield 3
+
+    for i in range(1, 11):
+        yield i
+
+gen = fetchElements()
+# print(gen.__next__())
+# print(next(gen))
+
+for value in gen:
+    print(value)
+
+
+# exceptions
+# before exceptions
+# errors are of three types:
+# 1. compile time --> syntactical
+# 2. logical --> compile and execution is fine, but the logic is wrong
+# 3. runtime --> abnormal terminating of execution
+# whenever an exception is occured, control comes out of the program
+# rest of the statements will not be executed
+# statements are of two types:
+# 1. normal statements --> which does not lead to exception
+# 2. critical statements --> these statements may lead to excpetion for different inputs
+# we need to handle the exceptions using try and expect blocks
+# a program may contains multiple critical statements
+# so we need to define those except blocks for each
+# or we can go with Exception class which is the super class
+# of all exceptions
+# multiple exceptions are handled using the multiple exceptions blocks
+# finally block is executed regardless of the exception
+# and is meant for closing the resources such as closing files, closing DB 
+# connectivity, closing the network
+a = 10
+b = 2
+
+try:
+    print('resource opened')
+    print(a / b)
+    num = int(input('Enter a num: '))
+    print(num)
+
+# try block may throws an exception
+# we need to handle using the except block
+except ZeroDivisionError as e:
+    print('Number should not be divided with zero', e)
+
+# except ValueError as e:
+#     print('invalid input', e)
+ 
+except Exception as e: # this exception can be able to handle any kind of exception
+    print('something went wrong', e)
+
+
+finally:
+    print('resources closed')
 
 
 
