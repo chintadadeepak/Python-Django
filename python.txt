@@ -937,6 +937,48 @@ finally:
     print('resources closed')
 
 
+# Threads
+# Threads are the basic unit of process
+# multithreading
+# execution of multiple threads
+# normal objects execute sequentially
+# but threads will execute simultaneously
+# in python threads are created using Thread class which is part of threading package
+# run() will be called when we call start()
+# start() makes thread enter into the runnable state
+
+# in order to make the main thread execute it's
+# instructions after the job done of threads
+# we can use join()
+# join() ensures after joining of threads with main, it will execute its instructions
+from threading import Thread
+from time import sleep
+
+class A(Thread):
+    def run(self):
+        for i in range(5):
+            print('hello')
+            sleep(1)
+
+
+class B(Thread):
+    def run(self):
+        for i in range(5):
+            print('hi')
+            sleep(1)
+
+
+
+obj1 = A()
+obj2 = B()
+obj1.start()
+sleep(0.5)
+obj2.start()
+obj1.join()
+obj2.join()
+print('all done')
+
+
 
 
 
