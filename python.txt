@@ -1069,7 +1069,89 @@ b = 6
 # a,b = b,a
 # print(a, b)
 
+# searching algos
+def linearSearch(list, key):
+    for i in range(len(list)):
+        if list[i] == key:
+            return i
+    
+    return -1
 
+
+list = [2, 5, 3, 4, 1, 6]
+key = 10
+result = linearSearch(list, key)
+if  result != -1:
+    print('found at', result)
+else:
+    print('not found')
+
+# binary search
+def binarySearch(list, key):
+    low = 0
+    high = len(list) - 1
+
+    while low <= high:
+        mid = low + (high - low) // 2
+        if list[mid] == key:
+            return mid
+        elif list[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return -1
+
+
+list = [2, 3, 7, 10, 13, 16, 26, 32]
+key = 100
+result = binarySearch(list, key)
+# print(result)
+if result != -1:
+    print('found at', result)
+else:
+    print('not found')
+
+
+# sorting algos
+# why selectionSort is prefered than bubble sort
+# the answer was it takes less swaps
+def bubbleSort(list):
+    size = len(list)
+    for i in range(size-1):
+        for j in range(size-1-i):
+            if list[j] > list[j+1]:
+                list[j], list[j+1] = list[j+1], list[j]
+
+def selectionSort(list):
+    size = len(list)
+
+    for i in range(size-1):
+        minIndex = i
+        for j in range(i+1, size):
+            if list[j] < list[minIndex]:
+                minIndex = j
+        
+        list[i], list[minIndex] = list[minIndex], list[i]
+
+list = [3, 1, 5, 4, 6, 2, 7]
+selectionSort(list)
+print(list)
+
+
+import mysql.connector as sql
+
+connection = sql.connect(host='localhost',
+                 user='root',
+                 password='Deepak@2003',
+                 database='world')
+
+cursor = connection.cursor()
+statement = 'SELECT * FROM aliens'
+cursor.execute(statement)
+result = cursor.fetchall()
+for record in result:
+    print(record)  
 
 
 
